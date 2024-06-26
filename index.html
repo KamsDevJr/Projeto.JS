@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourThumb</title>
+    <style>
+         
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #1DB954;
+            margin-bottom: 20px;
+            text-align: center;
+            text-decoration: underline;
+        }
+
+    
+
+        input[type="url"] {
+            width: 300px;
+            padding: 10px;
+            border: 2px solid #1DB954;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+       
+        button {
+            background-color: #1DB954;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1AA34A;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    </style>
+    </style>
+</head>
+<body>
+    <h1>Get Youtube Thumbnail</h1>
+    <input type="url" id="link_video" name="link_video" required>
+    <button onclick= get_thumbnail()>get_thumbnail</button>
+    <div>
+
+        <img id='img'src="">
+    </div>
+    <script>
+        //função button onclick
+        function get_thumbnail() {
+        //pegar o link do video a partir do Id do input
+            let link_video = document.getElementById('link_video').value;
+
+            //dividir o link a partir do 'v=' https://www.youtube.com/watch? 'v=rLbfxT6HTgE'
+            //que é aonde esta o ID de cada link
+            let videoId = link_video.split('v=')[1];
+            //
+            if (videoId) {
+            // Procura o primeiro '&' na string videoId
+                let posiçaoE = videoId.indexOf('&');
+            // Se encontrar '&' (ou seja, posiçaoE não é -1)
+                if (posiçaoE !== -1) {
+            // Extrai a substring de videoId antes do '&'
+                videoId = videoId.substring(0, posiçaoE);
+                }
+            // Define o atributo 'src' da imagem com a URL da miniatura do vídeo
+                document.getElementById('img').setAttribute('src', `https://i3.ytimg.com/vi/${videoId}/maxresdefault.jpg`);
+            } else {
+                window.alert('Isso não é um link')
+            }
+        }
+    </script>
+</body>
+    </script>
+</body>
+</html>
